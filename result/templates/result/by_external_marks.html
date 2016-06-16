@@ -1,0 +1,30 @@
+{% extends 'result/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+<div class="wrapper">
+{% for student in students %}
+   <div class="col-md-4 col-lg-4 box">
+      <div class="left" style="position:relative;">
+         <img src="{% static  student.image_url %}" alt="image not found" style="float:left;width:80px;height:110px;"  class="img-rounded"> 
+         <span class="rno">{{student.roll_no}}</span>
+      </div>
+      <div class="">
+          &nbsp&nbsp<span style="font-weight:bold;color:rgb(156,165,164)">#</span><span style="font-weight:bold;color:rgb(156,165,164); font-size:1.5em">{{forloop.counter}}</span><a href="#"> {{student.name.capitalize}}</a>
+         <div class = "inner_box">
+            <span>&nbsp &nbsp <b>SEM</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp &nbsp  III &nbsp&nbsp IV</span><br>
+            <span>&nbsp &nbsp <b>INTERNAL</b>  &nbsp {{student.total_internal_odd_sem}}   {{student.total_internal_even_sem}}</span>    {{student.total_internal}}<br>
+            <span>&nbsp &nbsp <b>EXTERNAL</b>  &nbsp{{student.total_external_odd_sem}}  {{student.total_external_even_sem}}</span>    {{student.total_external}}
+         </div>
+         <div class = "right">
+            <span style="font-weight:bold;color:rgb(156,165,164); font-size:1em">Grand Total : {{student.total_marks}}</span>
+         </div>
+      </div>
+      <div class="clr"></div>
+   </div>
+{% endfor %}
+</div>
+
+{% endblock %}

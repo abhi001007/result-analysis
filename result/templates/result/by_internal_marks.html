@@ -1,0 +1,63 @@
+{% extends 'result/base.html' %}
+{% block content %}
+<div class="wrapper">
+			<p id="rslt">Results</p>
+			
+<table class="tbl">
+	
+	<tr id="first">
+		<td rowspan="2"> #S.No. </td>
+		<td rowspan="2">Roll No.</td>
+		<td rowspan="2">Name</td>
+		<td><abbr title="Soft Computing">SC</abbr></td>
+		<td><abbr title="Digital Logic  Design">DLD</abbr></td>
+		<td><abbr title="Data Structures Using C">DS</abbr></td>
+		<td><abbr title="Discrete Structures and Graph Theory">DSGT</abbr></td>
+		<td><abbr title="Computer Based Numerical Techniques">CBNST</abbr></td>
+		<td><abbr title="Industrial Psychology">IP</abbr></td>
+		<td><abbr title="Cyber Security">CS</abbr></td>
+		<td><abbr title="General Proficiency">GP</abbr></td>		
+		<td rowspan="2">Total Internal {% if order == '1' %} <a href="{% url 'internals' '0' %}" ><span class="glyphicon glyphicon-triangle-bottom"></span> </a> {% else %} <a href="{% url 'internals' '1' %}"> <span class="glyphicon glyphicon-triangle-top"></span></a>{% endif %}</td>
+	</tr>
+	<tr>
+			<td><abbr title="Soft Computing">SC</abbr></td>
+		<td><abbr title="Digital Logic  Design">DLD</abbr></td>
+		<td><abbr title="Data Structures Using C">DS</abbr></td>
+		<td><abbr title="Discrete Structures and Graph Theory">DSGT</abbr></td>
+		<td><abbr title="Computer Based Numerical Techniques">CBNST</abbr></td>
+		<td><abbr title="Industrial Psychology">IP</abbr></td>
+		<td><abbr title="Cyber Security">CS</abbr></td>
+		<td><abbr title="General Proficiency">GP</abbr></td>		
+
+	</tr>
+	{% for student in students%}
+	<tr>
+		<td rowspan="2">{{forloop.counter}}</td>
+		<td rowspan="2">{{student.roll_no}}</td>
+		<td rowspan="2">{{student.name.capitalize}}</td>
+		<td>{{student.noe031i}}</td>
+		<td>{{student.nec309i}}</td>
+		<td>{{student.ncs301i}}</td>
+		<td>{{student.ncs302i}}</td>
+		<td>{{student.ncs303i}}</td>
+		<td>{{student.nhu301i}}</td>
+		<td>{{student.cs}}</td>
+		<td>{{student.gp301}}</td>	
+		
+		<td rowspan="2">{{student.total_internal}}</td>
+</tr>
+		<tr>
+<td>{{student.noe031i}}</td>
+		<td>{{student.nec309i}}</td>
+		<td>{{student.ncs301i}}</td>
+		<td>{{student.ncs302i}}</td>
+		<td>{{student.ncs303i}}</td>
+		<td>{{student.nhu301i}}</td>
+		<td>{{student.cs}}</td>
+		<td>{{student.gp301}}</td>	
+
+	</tr>
+	{% endfor %}
+</table>
+</div>
+{% endblock %}
